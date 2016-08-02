@@ -2,7 +2,7 @@ __author__ = 'jiangyh'
 
 from PageAnalyser import PageAnalyser
 
-class MainPageAnalyser(PageAnalyser):
+class BookPageAnalyser(PageAnalyser):
     def get_book_tilte(self, pagestr):
         pass
 

@@ -1,11 +1,11 @@
 __author__ = 'jiangyh'
 
-from MainPageAnalyser import MainPageAnalyser
+from BookPageAnalyser import BookPageAnalyser
 from TextParser import TextParser, NoSuchKeywordException
 from ChapterInfo import ChapterInfo
 from UrlHandle import UrlHandle
 
-class SilukeMainPageAnalyser(MainPageAnalyser):
+class SilukeBookPageAnalyser(BookPageAnalyser):
     def get_book_title(self, pagestr):
         parser = TextParser(pagestr)
         return parser.JumpStr('<h1>', 1).JumpStr('>', 1).GetStr('<').decode('utf-8').encode('gbk')

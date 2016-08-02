@@ -3,24 +3,24 @@
 __auther__ = 'jiangyh'
 
 import unittest
-from SilukeMainPageAnalyser import SilukeMainPageAnalyser
+from SilukeBookPageAnalyser import SilukeBookPageAnalyser
 
-class TestSilukeMainPageAnalyser(unittest.TestCase):
+class TestSilukeBookPageAnalyser(unittest.TestCase):
     def setUp(self):
         self.__url = 'http://www.siluke.tw/ny10354/'
         self.__pagestr = self.__LoadFile('test_data/siluke_main_page.html')
         pass
 
     def test_get_book_title(self):
-        analyser = SilukeMainPageAnalyser()
+        analyser = SilukeBookPageAnalyser()
         self.assertEqual('全职高手', analyser.get_book_title(self.__pagestr))
 
     def test_get_book_author(self):
-        analyser = SilukeMainPageAnalyser()
+        analyser = SilukeBookPageAnalyser()
         self.assertEqual('蝴蝶蓝', analyser.get_book_author(self.__pagestr))
 
     def test_get_chapter_info_list(self):
-        analyser = SilukeMainPageAnalyser()
+        analyser = SilukeBookPageAnalyser()
         info_list = analyser.get_chapter_info_list(self.__url, self.__pagestr)
         self.assertEqual(1781, len(info_list))
         self.assertEqual('http://www.siluke.tw/ny10354/6071434.html', info_list[0].url())
