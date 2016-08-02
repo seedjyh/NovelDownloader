@@ -10,6 +10,7 @@ from TestTextParser import TestTextParser
 from TestChapterInfo import TestChapterInfo
 from TestUrlHandle import TestUrlHandle
 from TestSilukeChapterPageAnalyser import TestSilukeChapterPageAnalyser
+from TestPageAnalyser import TestPageAnalyser
 
 if __name__ == '__main__':
     suite = unittest.TestSuite()
@@ -29,5 +30,7 @@ if __name__ == '__main__':
 
     suite.addTest(TestSilukeChapterPageAnalyser('test_get_chapter_title'))
     suite.addTest(TestSilukeChapterPageAnalyser('test_get_content'))
+
+    suite.addTest(TestPageAnalyser('test_Utf8ToAnsi'))
 
     unittest.TextTestRunner(verbosity=2).run(suite)

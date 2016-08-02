@@ -12,11 +12,11 @@ class SilukeBookPageAnalyser(BookPageAnalyser):
 
     def get_book_title(self):
         parser = TextParser(self.__pagestr)
-        return parser.JumpStr('<h1>', 1).JumpStr('>', 1).GetStr('<').decode('utf-8').encode('gbk')
+        return self.Utf8ToAnsi(parser.JumpStr('<h1>', 1).JumpStr('>', 1).GetStr('<'))
 
     def get_book_author(self):
         parser = TextParser(self.__pagestr)
-        return parser.JumpStr('<span>', 2).JumpStr('<strong>').GetStr('<').decode('utf-8').encode('gbk')
+        return self.Utf8ToAnsi(parser.JumpStr('<span>', 2).JumpStr('<strong>').GetStr('<'))
 
     def get_chapter_info_list(self):
         parser = TextParser(self.__GetPagePartContainsChapterInformation())
@@ -26,7 +26,7 @@ class SilukeBookPageAnalyser(BookPageAnalyser):
                 relative_url = parser.JumpStr('href="').GetStr('"')
             except NoSuchKeywordException:
                 break
-            title = parser.JumpStr('>').GetStr('<').decode('utf-8').encode('gbk')
+            title = self.Utf8ToAnsi(parser.JumpStr('>').GetStr('<'))
             chapter_info_list.append(ChapterInfo(UrlHandle(self.__url).GetHost() + relative_url, title))
         return chapter_info_list
 
