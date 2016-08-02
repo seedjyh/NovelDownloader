@@ -8,7 +8,7 @@ from SilukeBookPageAnalyser import SilukeBookPageAnalyser
 class TestSilukeBookPageAnalyser(unittest.TestCase):
     def setUp(self):
         self.__url = 'http://www.siluke.tw/ny10354/'
-        self.__pagestr = self.__LoadFile('test_data/siluke_main_page.html')
+        self.__pagestr = self.__LoadFile('test_data/siluke_book_page.html')
         pass
 
     def test_get_book_title(self):
