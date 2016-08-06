@@ -34,8 +34,14 @@ class SilukeNovelDownloader:
         return chapter
 
     def __DownloadUrl(self, url):
-        req = urllib2.Request(url)
-        f = urllib2.urlopen(req)
-        pagestr = f.read()
-        f.close()
+        pagestr = ''
+        while (1):
+            try:
+                req = urllib2.Request(url)
+                f = urllib2.urlopen(req)
+                pagestr = f.read()
+                f.close()
+                break
+            except urllib2.URLError:
+                print('Download URL %s failed, retry...'%url)
         return pagestr
