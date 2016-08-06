@@ -24,5 +24,5 @@ if __name__ == '__main__':
     downloader = SilukeNovelDownloader()
     book = downloader.DownloadBook(url)
     if output_file == '':
-        output_file_path = book.title() + '.txt'
+        output_file = book.title() + '.txt'
     book.WriteToFile(output_file)
