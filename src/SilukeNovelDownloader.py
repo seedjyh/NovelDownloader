@@ -12,10 +12,16 @@ from TextParser import NoSuchKeywordException
 class SilukeNovelDownloader:
     def DownloadBook(self, url):
         book_page_analyser = SilukeBookPageAnalyser(url, self.__DownloadUrl(url))
+        book_title = book_page_analyser.get_book_title()
+        if (len(book_title) < 1):
+            print('Cannot get book title.')
+            exit()
+        else:
+            print('Book title: %s'%(book_title))
         chapter_list = [self.DownloadChapter(chapter_info.url()) for chapter_info in book_page_analyser.get_chapter_info_list()]
 
         return Book(
-            book_page_analyser.get_book_title(),
+            book_title,
             book_page_analyser.get_book_author(),
             chapter_list
         )
